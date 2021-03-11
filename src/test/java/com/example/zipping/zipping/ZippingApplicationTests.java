@@ -37,6 +37,8 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.example.zipping.zipping.controller.ZipController;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
@@ -58,9 +60,6 @@ class ZippingApplicationTests {
   }
 
   @Test
-  void contextLoads() {}
-
-  @Test
   public void endpointAcceptsOneFile_andReturnsZip() throws Exception {
 
     // given
@@ -70,7 +69,7 @@ class ZippingApplicationTests {
 
     // when
     MvcResult result =
-        mockMvc.perform(multipart("/api/zip").file(file)).andExpect(status().isOk()).andReturn();
+        mockMvc.perform(multipart(ZipController.ZIP_ENDPOINT).file(file)).andExpect(status().isOk()).andReturn();
 
     // then
     assertThat(result, is(notNullValue()));
@@ -95,7 +94,7 @@ class ZippingApplicationTests {
     // when
     MvcResult result =
         mockMvc
-            .perform(multipart("/api/zip").file(file1).file(file2))
+            .perform(multipart(ZipController.ZIP_ENDPOINT).file(file1).file(file2))
             .andExpect(status().isOk())
             .andReturn();
 
@@ -113,7 +112,7 @@ class ZippingApplicationTests {
   @Test
   public void endpointCalledWithoutFiles_returnsError() throws Exception {
 
-    mockMvc.perform(multipart("/api/zip")).andExpect(status().isBadRequest());
+    mockMvc.perform(multipart(ZipController.ZIP_ENDPOINT)).andExpect(status().isBadRequest());
   }
 
   private Map<String, String> getZipEntriesFromResult(MvcResult result) throws IOException {

@@ -30,8 +30,10 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.zipping.zipping.service.ZipService;
 
 @RestController
-@RequestMapping("/api/zip")
+@RequestMapping(ZipController.ZIP_ENDPOINT)
 public class ZipController {
+
+  public static final String ZIP_ENDPOINT = "/api/zip";
 
   @Autowired private final ZipService zipService;
 

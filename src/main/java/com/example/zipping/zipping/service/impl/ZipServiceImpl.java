@@ -66,7 +66,6 @@ public class ZipServiceImpl implements ZipService {
         is.close();
       }
 
-      zos.close();
       return baos.toByteArray();
     } catch (FileNotFoundException e) {
       throw new InvalidOperationException(FILE_NOT_FOUND_ERROR + " " + e.getLocalizedMessage());
