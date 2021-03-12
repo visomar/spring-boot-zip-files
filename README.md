@@ -30,7 +30,7 @@ It is required to have installed in your system and updated to the last version 
 
 ### Usage
 
-If the previous steps are followed, and nothing breaks, you have available and endpoint at
+If the previous steps are followed, and nothing breaks, you have available an endpoint at
 ```
 http://localhost:8080/api/zip
 ```
