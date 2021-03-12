@@ -40,6 +40,8 @@ to perform POST requests.
 
 The recommended way to -visually- test it is with Postman. This is a screenshot of the needed steps:
 
+<img width="1374" alt="Postman 2021-03-12 09-24-55" src="https://user-images.githubusercontent.com/7437402/110915468-f4d4b800-8317-11eb-86f3-98544381ae88.png">
+
 1. Select POST as the method
 2. Write the URL: http://localhost:8080/api/zip
 3. Select **Body** from the options below the URL
@@ -52,7 +54,7 @@ The recommended way to -visually- test it is with Postman. This is a screenshot 
 
 #### Example with CURL
 
-With a sincle CURL command we can see the results too:
+With a single CURL command we can see the results too:
 
 ```sh
 curl -X POST -H "Content-Type: multipart/form-data" -F "files=@yepe1.txt" -F "files=@../../bin/yepe/yepe2.txt" http://localhost:8080/api/zip --output response.zip
